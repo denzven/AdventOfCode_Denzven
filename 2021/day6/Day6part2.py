@@ -1,33 +1,40 @@
-IntialArray = [3,4,3,1,2]
-#IntialArray = [int(num) for num in open('Day6Input.txt').read().split(',')]
-print(IntialArray)
-ithnum = 256
-ith = 0
-lenarr = 0
-def lanternfish(IntialArray,ithnum):
-	NextArray = []
-	day = 0
-	i = 0
-	nth = 0
-	global ith
-	global lenarr
-	for i in IntialArray:
-		if i >= 1:
-			NextArray.append(i-1)
-			nth += 1
-		if i == 0:
-			#print(NextArray[nth])
-			NextArray.append(8)
-			NextArray += [6]
-			nth+=1
-		if ith >= ithnum:
-			print(lenarr)
-			return lenarr
-	ith += 1
+import time
 
-	print(f"ith:{ith} NxtArr:NextArray len: {len(NextArray)}")
-	lenarr = len(NextArray)
-	lanternfish(NextArray,ithnum)
+StartTime = time.time()
 
+FishArray = [int(num) for num in open('Day6Input.txt').read().split(',')]
 
-lanternfish(IntialArray,ithnum)
+# Preparing for Cesus
+FishCensus = {
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0
+}
+
+# Intial Census
+for fish in FishArray:
+    FishCensus[fish] += 1
+
+for i in range(256):
+    PregFish = FishCensus[0]
+    for q in range(8):
+    	FishCensus[q] = FishCensus[q+1]
+    	#print(q)
+    
+    FishCensus[8] = PregFish
+    FishCensus[6] += PregFish
+
+TotalNumFish = sum(FishCensus.values())
+
+EndTime = time.time()
+
+print(f'Total Fish: {TotalNumFish}')
+print(f'Execution Time (s): {EndTime - StartTime}')
+
+# Thx a ton to @SukenSplash aka SunkenSplashGaming#4953 on discord
