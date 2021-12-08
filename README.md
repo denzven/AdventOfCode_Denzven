@@ -5,11 +5,11 @@
 this is a collection fo all the days puzzles i have solved during Adventofcode 
 
 the solution and code is split systematically among the directories in this format:
-
-<repo>.
-│
-└───<year>
-    ├───day<day>
+  
+<repo>  
+│  
+└───<year>  
+    ├───day<day>  
             Day<day>Input.txt 	<- Contains the puzzle input  
             Day<day>Part1.py  	<- Contains the my solution to Day<day> part 1 of puzzle  
             Day<day>Part2.py 	<- Contains the my solution to Day<day> part 2 of puzzle  
