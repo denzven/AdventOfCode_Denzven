@@ -1,33 +1,34 @@
-#IntialArray = [3,4,3,1,2]
+import time
+StartTime = time.time()
 IntialArray = [int(num) for num in open('Day6Input.txt').read().split(',')]
-print(IntialArray)
-ithnum = 80
-ith = 0
-lenarr = 0
-def lanternfish(IntialArray,ithnum):
+
+NumDays = 80
+DayI = NumOfFish = 0
+def lanternfish(IntialArray,NumDays):
 	NextArray = []
-	day = 0
-	i = 0
-	nth = 0
-	global ith
-	global lenarr
+	i = nth = 0
+	global DayI
+	global NumOfFish
+
 	for i in IntialArray:
 		if i >= 1:
 			NextArray.append(i-1)
 			nth += 1
+
 		if i == 0:
-			#print(NextArray[nth])
 			NextArray.append(8)
 			NextArray += [6]
-			nth+=1
-		if ith >= ithnum:
-			print(lenarr)
-			return lenarr
-	ith += 1
+			nth += 1
 
-	print(f"ith:{ith} NxtArr:{NextArray} len: {len(NextArray)}")
-	lenarr = len(NextArray)
-	lanternfish(NextArray,ithnum)
+		if DayI >= NumDays:
+			return NumOfFish
+	DayI += 1
+	NumOfFish = len(NextArray)
+	lanternfish(NextArray,NumDays)
 
+lanternfish(IntialArray,NumDays)
+FinalAnswer = NumOfFish
 
-lanternfish(IntialArray,ithnum)
+EndTime = time.time()
+print(f"Number of Lanternfish: {FinalAnswer}")
+print(f'Execution Time: {EndTime - StartTime}')

@@ -1,18 +1,11 @@
-InputFile = open('Day4Input.txt')
-InputFileLines = InputFile.read().splitlines()
+import time
+StartTime = time.time()
+InputFileLines = open('Day4Input.txt').readlines()
 
-BingoCallNum = InputFileLines[0]
+#Code
 
-#for q in InputFileLines:
+FinalAnswer = 
 
-BoardPosArray = [num for num in range(len(InputFileLines))][2::6]
-#print(BoardPosArray)
-#print(BoardPosArray[1::5])
-
-for i in BoardPosArray:
-	BingoBoard1 = [InputFileLines[i],InputFileLines[i+1],InputFileLines[i+2],InputFileLines[i+3],InputFileLines[i+4]]
-	print(BingoBoard1)
-	print("\n \n")
-
-#print(BingoCallNum)
-#print(BingoBoard)
+EndTime = time.time()
+print(f"Final score: {FinalAnswer}")
+print(f'Execution Time: {EndTime - StartTime}')
