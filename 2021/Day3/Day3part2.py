@@ -1,21 +1,20 @@
 from time import sleep
-
+import time
+StartTime = time.time()
 InputArrayFile = [line.rstrip() for line in open('Day3Input.txt')]
 i = 0
 q = 0
-InputArray = InputArrayFile
-InputArray2 = InputArrayFile
+InputArray = InputArray2 = InputArrayFile
 def GetOxyGenRate(InputArray):
-    ones = 0
-    zeros = 0
+    ones = zeros = 0
+    ArrayOnes = ArrayZeros = []
     global i
-    ArrayOnes = []
-    ArrayZeros = []
+    global OxyGenRate
+
     for number in InputArray:
         if len(InputArray) == 2:
-            print(f"\n\n {int(InputArray[0])} is the ans \n {int(InputArray[0],2)} in deci")
-            GetOxyGenRatevar = InputArray[0]
-            return GetOxyGenRatevar
+            OxyGenRate = InputArray[0]
+            return
 
         if len(str(number)) ==  12:
             print(f" Len: {len(str(number))}")
@@ -38,7 +37,7 @@ def GetOxyGenRate(InputArray):
         print(f"Ones: {ones} \n Zeros: {zeros}")
         print(f"ArrayOnes: {ArrayOnes} \n ArrayZeros: {ArrayZeros}")
 
-    #if zeros > ones:
+
     if len(ArrayZeros) > len(ArrayOnes):
         InputArray = ArrayZeros
         sleep(1)
@@ -61,19 +60,19 @@ def GetOxyGenRate(InputArray):
         GetOxyGenRate(InputArray)
 
 def GetCO2rate(InputArray2):
-    ones = 0
-    zeros = 0
+    ones = zeros = 0
+    ArrayOnes = ArrayZeros = []
     global q 
-    ArrayOnes = []
-    ArrayZeros = []
+    global CO2Rate
+
     for number in InputArray2:
         if q >= 12:
             print(q)
             return
         if len(InputArray2) == 2:
             print(f"\n\n {int(InputArray2[0])} is the ans \n {int(InputArray[0],2)} in deci")
-            GetCO2ratevar = InputArray2[0]
-            return GetCO2ratevar
+            CO2rate = InputArray2[0]
+            return
 
         if len(str(number)) ==  12:
             print(f" Len: {len(str(number))}")
@@ -119,10 +118,10 @@ def GetCO2rate(InputArray2):
         q+=1
         GetCO2rate(InputArray2)
 
-CO2Rate = GetCO2rate(InputArray2)
+GetCO2rate(InputArray2)
 sleep(10)
 
-OxyGenRate = GetOxyGenRate(InputArray)
+GetOxyGenRate(InputArray)
 
 print(OxyGenRate)
 print(CO2Rate)

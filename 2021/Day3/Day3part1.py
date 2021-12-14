@@ -1,5 +1,11 @@
+import time
+StartTime = time.time()
+InputFileLines = open('Day3Input.txt').readlines()
+ones = zeros = 0
+GamaRate = []
+EpsilonRate = []
+
 def get_GamaRate(digit):
-	global InputFile
 	global InputFileLines
 	global GamaRate
 	global EpsilonRate
@@ -13,34 +19,20 @@ def get_GamaRate(digit):
 	if ones > zeros:
 		GamaRate.append(1)
 		EpsilonRate.append(0)
-		print(ones,zeros)
-		print(GamaRate)
-		print(EpsilonRate)
+
 	if ones < zeros:
 		GamaRate.append(0)
 		EpsilonRate.append(1)
-		print(GamaRate)
-		print(EpsilonRate)
 
-InputFile = open('Day3Input.txt')
-InputFileLines = InputFile.readlines()
-ones = 0
-zeros = 0
-GamaRate = []
-EpsilonRate = []
-for i in [1,2,3,4,5,6,7,8,9,10,11,12]:
-	print(i)
+for i in range(1,13):
 	get_GamaRate(i)
 
-GamaRate = str("".join(str(i) for i in GamaRate))
-EpsilonRate = str("".join(str(i) for i in EpsilonRate))
+GamaRate = int(str("".join(str(i) for i in GamaRate)),2)
+EpsilonRate = int(str("".join(str(i) for i in EpsilonRate)),2)
+PowerConsumption = GamaRate * EpsilonRate
 
-print(GamaRate)
-print(EpsilonRate)
+FinalAnswer = PowerConsumption
 
-GamaRateDeci = int(GamaRate,2)
-print(GamaRateDeci)
-EpsilonRateDeci = int(EpsilonRate,2)
-print(EpsilonRateDeci)
-PowerConsumption = GamaRateDeci * EpsilonRateDeci
-print(PowerConsumption)
+EndTime = time.time()
+print(f"Power consumption of the submarine: {FinalAnswer}")
+print(f'Execution Time: {EndTime - StartTime}')
